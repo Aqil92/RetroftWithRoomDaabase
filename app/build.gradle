@@ -1,0 +1,50 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.sevenrocks.retroftwithroomdaabase"
+        minSdkVersion 19
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+def roomVersion = '1.1.0'
+def retrofitVersion = '2.1.0'
+def BUTTER_KNIFE_VERSION = "8.5.1"
+def BUILD_VERSION = '27.1.1'
+
+dependencies {
+    implementation "com.android.support:recyclerview-v7:$BUILD_VERSION"
+    implementation "com.android.support:cardview-v7:$BUILD_VERSION"
+    implementation "com.android.support:appcompat-v7:$BUILD_VERSION"
+    implementation "com.android.support:design:$BUILD_VERSION"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+
+    //Butternife
+    implementation "com.jakewharton:butterknife:$BUTTER_KNIFE_VERSION"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$BUTTER_KNIFE_VERSION"
+
+    //Multidex
+    implementation 'com.android.support:multidex:1.0.1'
+
+    //#RoomDataBase
+    implementation "android.arch.persistence.room:runtime:$roomVersion"
+    annotationProcessor "android.arch.persistence.room:compiler:$roomVersion"
+
+    //#Retrofit With RxJava
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation 'com.google.code.gson:gson:2.6.1'
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation 'io.reactivex:rxjava:1.1.6'
+    implementation 'io.reactivex:rxandroid:1.2.1'
+    implementation "com.squareup.retrofit2:adapter-rxjava:$retrofitVersion"
+}
